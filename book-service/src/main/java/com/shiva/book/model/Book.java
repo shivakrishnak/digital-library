@@ -27,4 +27,5 @@ public class Book {
     @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
 }
