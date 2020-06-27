@@ -1,4 +1,4 @@
-package com.shiva.service;
+package com.shiva.repository;
 
 import com.shiva.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

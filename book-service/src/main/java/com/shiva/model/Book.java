@@ -29,4 +29,11 @@ public class Book {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Book(String name, List<Author> authors, String year, String isbn, String category) {
+        this.name = name;
+        this.authors = authors;
+        this.year = year;
+        this.isbn = isbn;
+        this.category = new Category(category);
+    }
 }

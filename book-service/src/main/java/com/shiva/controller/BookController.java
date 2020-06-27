@@ -2,7 +2,7 @@ package com.shiva.controller;
 
 import com.shiva.exception.BookNotFoundException;
 import com.shiva.model.Book;
-import com.shiva.service.BookRepository;
+import com.shiva.repository.BookRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
