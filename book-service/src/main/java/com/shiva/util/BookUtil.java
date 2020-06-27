@@ -1,4 +1,4 @@
-package com.shiva.book.util;
+package com.shiva.util;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.shiva.book.exception;
+package com.shiva.exception;
 
 import java.util.function.Supplier;
 

@@ -1,15 +1,17 @@
-package com.shiva.book.controller;
+package com.shiva.controller;
 
-import com.shiva.book.exception.BookNotFoundException;
-import com.shiva.book.model.Book;
-import com.shiva.book.service.BookRepository;
+import com.shiva.exception.BookNotFoundException;
+import com.shiva.model.Book;
+import com.shiva.service.BookRepository;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping(name = "/books")
+@RestController
+@RequestMapping("/books")
 public class BookController {
 
     private BookRepository bookRepository;
@@ -19,29 +21,30 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> all(){
+    @GetMapping
+    public List<Book> all() {
         return bookRepository.findAll();
     }
 
     @GetMapping("/{book_id}")
-    public Book get(@PathVariable(name = "book_id")Long id) throws BookNotFoundException {
+    public Book get(@ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
         return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Invalid Id  : " + id));
     }
 
     @PostMapping
-    public Book add(@RequestBody Book book){
+    public Book add(@RequestBody Book book) {
         return bookRepository.save(book);
     }
 
     @DeleteMapping("/{book_id}")
-    public void delete(@PathVariable(name = "book_id")Long id) throws BookNotFoundException {
+    public void delete(@ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
         bookRepository.deleteById(id);
     }
 
-    @PutMapping
-    public Book update(@RequestBody Book book, Long id){
+    @PutMapping("/{book_id}")
+    public Book update(@RequestBody Book book, @ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) {
         Optional<Book> findBook = bookRepository.findById(id);
-        if(findBook.isPresent()){
+        if (findBook.isPresent()) {
             Book inBook = findBook.get();
             inBook.setName(book.getName());
             inBook.setIsbn(book.getIsbn());

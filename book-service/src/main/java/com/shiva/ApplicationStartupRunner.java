@@ -1,13 +1,11 @@
-package com.shiva.book;
+package com.shiva;
 
-import com.shiva.book.model.Author;
-import com.shiva.book.model.Book;
-import com.shiva.book.model.Category;
-import com.shiva.book.service.BookRepository;
-import com.shiva.book.service.CategoryRepository;
-import com.shiva.book.util.BookUtil;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
+import com.shiva.model.Author;
+import com.shiva.model.Book;
+import com.shiva.model.Category;
+import com.shiva.service.BookRepository;
+import com.shiva.service.CategoryRepository;
+import com.shiva.util.BookUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
