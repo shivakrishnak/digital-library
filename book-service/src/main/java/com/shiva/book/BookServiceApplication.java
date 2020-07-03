@@ -1,4 +1,4 @@
-package com.shiva;
+package com.shiva.book;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

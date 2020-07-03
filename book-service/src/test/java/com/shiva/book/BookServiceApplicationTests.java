@@ -1,4 +1,4 @@
-package com.shiva;
+package com.shiva.book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
