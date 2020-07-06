@@ -1,8 +1,10 @@
 package com.shiva.user.repository;
 
-import com.shiva.book.model.Book;
+import com.shiva.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 //@RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface BookRepository extends JpaRepository<Book, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 }

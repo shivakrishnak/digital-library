@@ -1,7 +1,7 @@
 package com.shiva.user.service;
 
-import com.shiva.book.model.Book;
-import com.shiva.book.repository.BookRepository;
+import com.shiva.user.model.User;
+import com.shiva.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,32 +9,29 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookService {
+public class UserService {
 
-    private BookRepository bookRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
-    public Optional<Book> findById(Long id) {
-        return bookRepository.findById(id);
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
-    public Book save(Book book) {
-        return bookRepository.save(book);
+    public User save(User book) {
+        return userRepository.save(book);
     }
 
     public void deleteById(Long id) {
-        bookRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
- /*   public void add(BookDto book){
-        bookRepository.save(book.toEntity());
-    }*/
 }
