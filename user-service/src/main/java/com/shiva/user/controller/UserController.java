@@ -48,7 +48,6 @@ public class UserController {
         Optional<User> findUser = userService.findById(id);
         if (findUser.isPresent()) {
             User inUser = findUser.get();
-            inUser.setUsername(user.getUsername());
             inUser.setFirstName(user.getFirstName());
             inUser.setLastName(user.getLastName());
             inUser.setPhoneNumber(user.getPhoneNumber());

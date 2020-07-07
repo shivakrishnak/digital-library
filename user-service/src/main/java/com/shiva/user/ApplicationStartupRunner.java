@@ -19,8 +19,8 @@ public class ApplicationStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userService.save(new User(1L, "sivakrsna", "shiva", "krishna", "1234567890", "shiva@gmail.com"));
-        userService.save(new User(2L, "testUsername", "testFirstName", "testLastName", "0987654321", "test@gmail.com"));
-        userService.save(new User(3L, "test", "fname", "lname", "99999999999", "test@gmail.com"));
+//        userService.save(new User(1L, "shiva", "krishna", "1234567890", "shiva@gmail.com"));
+//        userService.save(new User(2L, "testFirstName", "testLastName", "0987654321", "test@gmail.com"));
+//        userService.save(new User(3L, "fname", "lname", "99999999999", "test@gmail.com"));
     }
 }

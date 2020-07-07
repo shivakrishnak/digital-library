@@ -16,7 +16,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_generator")
     @TableGenerator(name = "user_generator", table = "user_id_generator")
     private Long id;
-    private String username;
     private String firstName;
     private String lastName;
     private String phoneNumber;
