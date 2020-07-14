@@ -1,7 +1,9 @@
-package com.shiva.repository;
+package com.shiva.book.repository;
 
-import com.shiva.model.Category;
+import com.shiva.book.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

@@ -1,4 +1,4 @@
-package com.shiva.model;
+package com.shiva.book.model;
 
 public enum CategoryEnum {
 
