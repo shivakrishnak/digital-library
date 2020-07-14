@@ -32,11 +32,11 @@ public class ApplicationStartupRunner implements CommandLineRunner {
     }
 
     public void run(String... args) throws Exception {
-        log.info("Loading Categories");
+       /* log.info("Loading Categories");
         List<String> categories = Arrays.asList("100,Fiction", "101,Non-Fiction", "102, Software Development");
         categories.stream()
                 .map(cat -> cat.split(","))
-                .forEach(map -> categoryRepository.save(new Category(Long.parseLong(map[0]), map[1])));
+                .forEach(map -> categoryRepository.save(new Category(Long.parseLong(map[0]), map[1])));*/
 
 /*        BookDto book1 = new BookDto.Builder().name("Effective Java").year("2019").category(CategoryEnum.SoftwareDevelopment.getName()).isbn(BookUtil.getUUID()).authors(Arrays.asList(new Author(1l, "Joshua", "Bloch"))).build();
         bookService.add(book1);*/

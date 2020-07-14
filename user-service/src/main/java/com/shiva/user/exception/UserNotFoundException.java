@@ -1,9 +1,7 @@
-package com.shiva.book.exception;
+package com.shiva.user.exception;
 
-import java.util.function.Supplier;
-
-public class BookNotFoundException extends Exception {
-    public BookNotFoundException(String msg) {
+public class UserNotFoundException extends Exception {
+    public UserNotFoundException(String msg) {
         super(msg);
     }
 }
