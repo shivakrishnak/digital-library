@@ -2,8 +2,8 @@ package com.shiva.book.controller;
 
 import com.shiva.book.exception.BookNotFoundException;
 import com.shiva.book.model.Book;
-import com.shiva.book.repository.BookRepository;
 import com.shiva.book.service.BookService;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,27 +25,32 @@ public class BookController {
 
 
     @GetMapping
+    @ApiOperation(value = "Get all books", nickname = "Get all books")
     public List<Book> all() {
         return bookService.findAll();
     }
 
     @GetMapping("/{book_id}")
-    public Book get(@ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
+    @ApiOperation(value = "Get book for the Id")
+    public Book get(@ApiParam(value = "Id of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
         return bookService.findById(id).orElseThrow(() -> new BookNotFoundException("Invalid Id  : " + id));
     }
 
     @PostMapping
+    @ApiOperation(value = "Add a book")
     public Book add(@RequestBody Book book) {
         return bookService.save(book);
     }
 
     @DeleteMapping("/{book_id}")
-    public void delete(@ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
+    @ApiOperation(value = "delete a book")
+    public void delete(@ApiParam(value = "Id of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) throws BookNotFoundException {
         bookService.deleteById(id);
     }
 
     @PutMapping("/{book_id}")
-    public Book update(@RequestBody Book book, @ApiParam(value = "ID of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) {
+    @ApiOperation(value = "Update book data for the Id")
+    public Book update(@RequestBody Book book, @ApiParam(value = "Id of book to return", required = true, example = "123") @PathVariable(name = "book_id") Long id) {
         Optional<Book> findBook = bookService.findById(id);
         if (findBook.isPresent()) {
             Book inBook = findBook.get();
