@@ -1,5 +1,6 @@
 package com.shiva.user.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.shiva.user.exception.UserNotFoundException;
 import com.shiva.user.model.User;
 import com.shiva.user.service.UserService;
@@ -8,6 +9,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,8 +28,14 @@ public class UserController {
 
     @GetMapping
     @ApiOperation(value = "Get all users", nickname = "Get all users")
+    @HystrixCommand(fallbackMethod = "defaultUsers")
     public List<User> all() {
         return userService.findAll();
+    }
+
+    public List<User> defaultUsers(){
+        List<User> users = Arrays.asList(new User(1L, "shiva", "krishna", "1234567890", "shiva@gmail.com"));
+        return users;
     }
 
     @GetMapping("/{user_id}")
