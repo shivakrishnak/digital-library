@@ -2,9 +2,7 @@ package com.shiva.book.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.shiva.book.exception.BookNotFoundException;
-import com.shiva.book.model.Author;
 import com.shiva.book.model.Book;
-import com.shiva.book.model.Category;
 import com.shiva.book.service.BookService;
 import com.shiva.book.util.BookUtil;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +10,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +35,7 @@ public class BookController {
     }
 
     public List<Book> defaultBooks() {
-        List<Book> books = Arrays.asList(new Book(1l, "Effective Java", new ArrayList<Author>(Arrays.asList(new Author("Joshua", "Bloch"))), "2019", BookUtil.getUUID(), new Category(Long.valueOf(102), "Software Development")));
+        List<Book> books = Arrays.asList(new Book(1l, "Effective Java", "Joshua Bloch", "2019", BookUtil.getUUID(), "Software Development"));
         return books;
     }
 
@@ -70,7 +67,7 @@ public class BookController {
             inBook.setName(book.getName());
             inBook.setIsbn(book.getIsbn());
             inBook.setYear(book.getYear());
-            inBook.setAuthors(book.getAuthors());
+            inBook.setAuthor(book.getAuthor());
             inBook.setCategory(book.getCategory());
             bookService.save(inBook);
         } else {

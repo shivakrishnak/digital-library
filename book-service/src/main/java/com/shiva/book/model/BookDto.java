@@ -1,14 +1,11 @@
 package com.shiva.book.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BookDto {
 
     private String name;
     private String year;
     private String isbn;
-    private List<Author> authors = new ArrayList<>();
+    private String author;
     private String category;
 
     public String getName() {
@@ -17,14 +14,6 @@ public class BookDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
     }
 
     public String getYear() {
@@ -43,6 +32,14 @@ public class BookDto {
         this.isbn = isbn;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -51,34 +48,35 @@ public class BookDto {
         this.category = category;
     }
 
-    public BookDto(String name, List<Author> authors, String year, String isbn, String category) {
+    public BookDto(String name, String year, String isbn, String author, String category) {
         this.name = name;
-        this.authors = authors;
         this.year = year;
         this.isbn = isbn;
+        this.author = author;
         this.category = category;
     }
 
-    public Book toEntity(){
-        return new Book(this.getName(),this.getAuthors(),this.getYear(),this.getIsbn(),this.getCategory());
+    public Book toEntity() {
+        return new Book(this.getName(), this.getYear(), this.getIsbn(), this.getAuthor(), this.getCategory());
     }
 
-    public static class Builder{
+    public static class Builder {
         private String name;
-        private List<Author> authors = new ArrayList<>();
+        private String author;
         private String year;
         private String isbn;
         private String category;
 
-        public Builder() { }
+        public Builder() {
+        }
 
         public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder authors(List<Author> authors) {
-            this.authors = authors;
+        public Builder authors(String author) {
+            this.author = author;
             return this;
         }
 
@@ -97,8 +95,8 @@ public class BookDto {
             return this;
         }
 
-        public BookDto build(){
-            return new BookDto(name,authors,year,isbn,category);
+        public BookDto build() {
+            return new BookDto(name, author, year, isbn, category);
         }
     }
 }
