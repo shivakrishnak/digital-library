@@ -19,11 +19,10 @@ public class UserController {
 
     private UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-    @Autowired
 
 
     @GetMapping
@@ -33,7 +32,7 @@ public class UserController {
         return userService.findAll();
     }
 
-    public List<User> defaultUsers(){
+    public List<User> defaultUsers() {
         List<User> users = Arrays.asList(new User(1L, "shiva", "krishna", "1234567890", "shiva@gmail.com"));
         return users;
     }

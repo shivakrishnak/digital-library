@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
-@EnableZuulProxy
+//@EnableZuulProxy
 @EnableDiscoveryClient
 @SpringBootApplication
 public class LibraryServiceApplication {
