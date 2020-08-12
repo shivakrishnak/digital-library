@@ -9,18 +9,18 @@ import java.util.List;
 @FeignClient(name = "BOOK-SERVICE", fallbackFactory = BooksFallbackFactory.class)
 public interface BookClient {
 
-    @GetMapping("/")
+    @GetMapping("/books/")
     public List<Book> all();
 
-    @GetMapping("/{book_id}")
+    @GetMapping("/books/{book_id}")
     public Book get(@PathVariable(name = "book_id") Long id);
 
-    @PostMapping
+    @PostMapping("/books/")
     public Book add(@RequestBody Book book);
 
-    @DeleteMapping("/{book_id}")
+    @DeleteMapping("/books/{book_id}")
     public void delete(@PathVariable(name = "book_id") Long id);
 
-    @PutMapping("/{book_id}")
+    @PutMapping("/books/{book_id}")
     public Book update(@RequestBody Book book, @PathVariable(name = "book_id") Long id);
 }

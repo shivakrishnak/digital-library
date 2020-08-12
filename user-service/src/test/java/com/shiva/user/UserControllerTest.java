@@ -1,11 +1,9 @@
-package com.shiva.book;
+package com.shiva.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shiva.book.controller.BookController;
-import com.shiva.book.model.Book;
-import com.shiva.book.service.BookService;
-import com.shiva.book.util.BookUtil;
-import org.junit.jupiter.api.BeforeEach;
+import com.shiva.user.controller.UserController;
+import com.shiva.user.model.User;
+import com.shiva.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +24,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = BookController.class)
-public class BookControllerTest {
+@WebMvcTest(controllers = UserController.class)
+public class UserControllerTest {
 
     @Autowired
-    private BookController controller;
+    private UserController controller;
 
     @Autowired
     private MockMvc mockMvc;
@@ -42,15 +40,8 @@ public class BookControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private BookService bookService;
+    private UserService bookService;
 
-    @BeforeEach
-    void printApplicationContext() {
-/*        Arrays.stream(applicationContext.getBeanDefinitionNames())
-                .map(name -> applicationContext.getBean(name).getClass().getName())
-                .sorted()
-                .forEach(System.out::println);*/
-    }
 
     @Test
     public void contexLoads() throws Exception {
@@ -58,32 +49,32 @@ public class BookControllerTest {
     }
 
     @Test
-    void getAllBooks_HttpStatusOk() throws Exception {
+    void getAllUsers_HttpStatusOk() throws Exception {
         when(bookService.findAll())
-                .thenReturn(getBooks());
+                .thenReturn(getUsers());
 
-        mockMvc.perform(get("/books/")
+        mockMvc.perform(get("/users/")
                 .contentType("application/json"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    void getABook_HttpStatusOk() throws Exception {
+    void getAUser_HttpStatusOk() throws Exception {
         when(bookService.findById(eq(1L)))
-                .thenReturn(java.util.Optional.of(getBook()));
+                .thenReturn(java.util.Optional.of(getUser()));
 
         mockMvc.perform(
-                get("/books/{book_id}", 1L)
+                get("/users/{user_id}", 1L)
                         .contentType("application/json"))
                 .andExpect(status().isOk());
     }
 
-    public List<Book> getBooks() {
-        List<Book> books = Arrays.asList(getBook());
-        return books;
+    public List<User> getUsers() {
+        List<User> users = Arrays.asList(getUser());
+        return users;
     }
 
-    private Book getBook() {
-        return new Book(1l, "Effective Java", "Joshua Bloch", "2019", BookUtil.getUUID(), "Software Development");
+    private User getUser() {
+        return new User(1L, "shiva", "krishna", "1234567890", "shiva@gmail.com");
     }
 }

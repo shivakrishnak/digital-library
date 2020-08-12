@@ -9,18 +9,18 @@ import java.util.List;
 @FeignClient(name = "USER-SERVICE", fallbackFactory = UsersFallbackFactory.class)
 public interface UserClient {
 
-    @GetMapping("/")
+    @GetMapping("/users/")
     public List<User> all();
 
-    @GetMapping("/{user_id}")
+    @GetMapping("/users/{user_id}")
     public User get(@PathVariable(name = "user_id") Long id);
 
-    @PostMapping
+    @PostMapping("/users/")
     public User add(@RequestBody User user);
 
-    @DeleteMapping("/{user_id}")
+    @DeleteMapping("/users/{user_id}")
     public void delete(@PathVariable(name = "user_id") Long id);
 
-    @PutMapping("/{user_id}")
+    @PutMapping("/users/{user_id}")
     public User update(@RequestBody User user, @PathVariable(name = "user_id") Long id);
 }

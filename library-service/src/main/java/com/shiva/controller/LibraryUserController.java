@@ -21,7 +21,6 @@ public class LibraryUserController {
 
     @GetMapping
     @ApiOperation(value = "Get all users", nickname = "Get all users")
-    @HystrixCommand(fallbackMethod = "defaultUsers")
     public List<User> all() {
         return userClient.all();
     }
