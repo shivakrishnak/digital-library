@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Library System
+  description: Books management System - An API that allows users to use services
+    of library
+  contact:
+    name: Shiva Krishna
+    url: https://github.com/shivakrishnak
+    email: itzShivaKrishna@gmail.com
+  version: 2.0.0
+servers:
+- url: /
+paths:
+  /books:
+    get:
+      description: Obtain information about books
+      parameters:
+      - name: bodyLimit
+        in: query
+        description: amount of books returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pageLimit
+        in: query
+        description: pages to return the books info
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 3
+      responses:
+        "200":
+          description: Successful pull of Books info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+    post:
+      description: Create a new book in the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        "200":
+          description: Successfully created a new book
+  /books/{id}:
+    get:
+      description: Obtain information about the specific book
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the book
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          example: 100
+      responses:
+        "200":
+          description: Successful pull of Books info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+components:
+  schemas:
+    Books:
+      $ref: '#/components/schemas/Book'
+    Book:
+      properties:
+        id:
+          type: integer
+          example: 4
+        name:
+          type: string
+          example: Effective Java
+        author:
+          type: string
+          example: Joshua Bloch
+        year:
+          type: string
+          example: "2002"
+        isbn:
+          type: string
+          example: 978-3-16-148410
+        category:
+          type: string
+          example: Software
+      description: Model containing book information
