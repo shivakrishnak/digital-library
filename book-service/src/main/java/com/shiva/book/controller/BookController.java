@@ -20,12 +20,10 @@ public class BookController {
 
     private BookService bookService;
 
+    @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-
-    @Autowired
-
 
     @GetMapping
     @ApiOperation(value = "Get all books", nickname = "Get all books")

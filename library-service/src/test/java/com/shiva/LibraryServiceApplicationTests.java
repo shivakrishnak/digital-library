@@ -1,10 +1,10 @@
-package com.shiva.book;
+package com.shiva;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookServiceApplicationTests {
+class LibraryServiceApplicationTests {
 
 /*	@Test
 	void contextLoads() {

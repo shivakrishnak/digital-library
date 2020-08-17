@@ -25,3 +25,9 @@ http://localhost:8801/h2-console
 http://localhost:8802/swagger-ui.html
 
 http://localhost:8802/h2-console
+
+#### library-service
+
+http://localhost:8800/swagger-ui.html
+
+http://localhost:8800/h2-console
